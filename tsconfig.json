@@ -23,7 +23,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.spec.tsx"
-  ],
+, "src/components/Comments/index.tsx"  ],
   "exclude": [
     "node_modules"
   ]

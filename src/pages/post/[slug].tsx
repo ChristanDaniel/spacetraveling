@@ -133,7 +133,7 @@ export default function Post({
               </div>
             )}
 
-            {navigation?.prevPost.length > 0 && (
+            {navigation?.nextPost.length > 0 && (
               <div>
                 <h3>{navigation.nextPost[0].data.title}</h3>
                 <Link href={`/post/${navigation.nextPost[0].uid}`}>
@@ -202,7 +202,7 @@ export const getStaticProps: GetStaticProps = async ({
     {
       pageSize: 1,
       after: response.id,
-      orderings: '[document.last_publication_date]',
+      orderings: '[document.last_publication_date desc]',
     }
   );
 

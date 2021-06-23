@@ -17,6 +17,7 @@ import Comments from '../../components/Comments';
 
 interface Post {
   first_publication_date: string | null;
+  last_publication_date: string | null;
   data: {
     title: string;
     banner: {
@@ -80,6 +81,20 @@ export default function Post({
     }
   );
 
+  const isPostEdited =
+    post.first_publication_date !== post.last_publication_date;
+
+  let editionDate;
+  if (isPostEdited) {
+    editionDate = format(
+      new Date(post.last_publication_date),
+      "'* editado em' dd MMM yyyy', ás' h':'m",
+      {
+        locale: ptBR,
+      }
+    );
+  }
+
   return (
     <>
       <Head>
@@ -106,6 +121,7 @@ export default function Post({
                 {`${readTime} min`}
               </li>
             </ul>
+            {isPostEdited && <span>{editionDate}</span>}
           </div>
 
           {post.data.content.map(content => {
